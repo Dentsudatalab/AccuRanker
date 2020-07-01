@@ -22,25 +22,21 @@
         {
         }
 
-        public virtual async Task<IEnumerable<Domain>> GetDomains(params Field[] fields)
+        public virtual async Task<IEnumerable<Domain>> GetDomains(int pageSize = 1000, params Field[] fields)
         {
-            return await GetDomains((IEnumerable<Field>)fields);
+            return await GetDomains(fields, pageSize);
         }
 
-        public virtual async Task<IEnumerable<Domain>> GetDomains(IEnumerable<Field> fields)
+        public virtual async Task<IEnumerable<Domain>> GetDomains(IEnumerable<Field> fields, int pageSize = 1000)
         {
             await AuthorizeClient(AuthValues);
 
             var endpoint = new AccuRankerQueryBuilder("domains/")
-                .WithFields(fields)
-                .Build();
+                .WithFields(fields);
 
-            var domains = await HttpClient.GetApiResponse<IEnumerable<Domain>>(endpoint);
+            var domains = await GetAllPages<Domain>(endpoint, pageSize);
 
-            if (domains != null && domains.HasValue)
-                return domains.Value;
-
-            throw new ApiException(domains?.Error);
+            return domains;
         }
 
         public async Task<Domain> GetDomain(long id, params Field[] fields)

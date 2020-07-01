@@ -22,35 +22,31 @@
         {
         }
 
-        public async Task<IEnumerable<Account>> GetAccounts(params Field[] fields)
+        public async Task<IEnumerable<Account>> GetAccounts(int pageSize = 1000, params Field[] fields)
         {
-            return await GetAccounts((IEnumerable<Field>)fields);
+            return await GetAccounts(fields, pageSize);
         }
 
-        public async Task<IEnumerable<Account>> GetAccounts(IEnumerable<Field> fields)
+        public async Task<IEnumerable<Account>> GetAccounts(IEnumerable<Field> fields, int pageSize = 1000)
         {
             await AuthorizeClient(AuthValues);
 
             var endpoint = new AccuRankerQueryBuilder("accounts/")
-                .WithFields(fields)
-                .Build();
+                .WithFields(fields);
 
-            var accounts = await HttpClient.GetApiResponse<IEnumerable<Account>>(endpoint);
+            var accounts = await GetAllPages<Account>(endpoint, pageSize);
 
-            if (accounts != null && accounts.HasValue)
-                return accounts.Value;
-
-            throw new ApiException(accounts?.Error);
+            return accounts;
         }
 
-        public async Task<IEnumerable<Account>> GetAccount(int id)
+        public async Task<Account> GetAccount(int id)
         {
             await AuthorizeClient(AuthValues);
 
             var endpoint = new AccuRankerQueryBuilder($"accounts/{id}/")
                 .Build();
 
-            var groups = await HttpClient.GetApiResponse<IEnumerable<Account>>(endpoint);
+            var groups = await HttpClient.GetApiResponse<Account>(endpoint);
 
             if (groups != null && groups.HasValue)
                 return groups.Value;
