@@ -10,10 +10,6 @@
 
     public class Rank
     {
-        public Rank()
-        {
-        }
-
         [JsonProperty("id")]
         public long Id { get; set; }
 
@@ -55,6 +51,21 @@
 
         [JsonProperty("page_serp_features")]
         public SerpFeatures SerpFeatures { get; set; }
+
+        [JsonProperty("above_the_fold")]
+        public SerpFeatures AboveTheFold { get; set; }
+
+        [JsonProperty("browser_position_x1")]
+        public SerpFeatures BrowserPositionX1 { get; set; }
+
+        [JsonProperty("browser_position_y1")]
+        public SerpFeatures BrowserPositionY1 { get; set; }
+
+        [JsonProperty("browser_position_x2")]
+        public SerpFeatures BrowserPositionX2 { get; set; }
+
+        [JsonProperty("browser_position_y2")]
+        public SerpFeatures BrowserPositionY2 { get; set; }
     }
 
     public class RankFields : FieldsDescriptor
@@ -80,6 +91,16 @@
         public Field HasVideo { get; protected set; }
 
         public Field HasReviews { get; protected set; }
+
+        public Field AboveTheFold { get; protected set; }
+
+        public Field BrowserPositionX1 { get; protected set; }
+
+        public Field BrowserPositionY1 { get; protected set; }
+
+        public Field BrowserPositionX2 { get; protected set; }
+
+        public Field BrowserPositionY2 { get; protected set; }
 
         public TitleDescriptionFields TitleDescription => new TitleDescriptionFields(this);
 
