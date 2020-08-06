@@ -53,19 +53,19 @@
         public SerpFeatures SerpFeatures { get; set; }
 
         [JsonProperty("above_the_fold")]
-        public SerpFeatures AboveTheFold { get; set; }
+        public bool AboveTheFold { get; set; }
 
         [JsonProperty("browser_position_x1")]
-        public SerpFeatures BrowserPositionX1 { get; set; }
+        public int BrowserPositionX1 { get; set; }
 
         [JsonProperty("browser_position_y1")]
-        public SerpFeatures BrowserPositionY1 { get; set; }
+        public int BrowserPositionY1 { get; set; }
 
         [JsonProperty("browser_position_x2")]
-        public SerpFeatures BrowserPositionX2 { get; set; }
+        public int BrowserPositionX2 { get; set; }
 
         [JsonProperty("browser_position_y2")]
-        public SerpFeatures BrowserPositionY2 { get; set; }
+        public int BrowserPositionY2 { get; set; }
     }
 
     public class RankFields : FieldsDescriptor
