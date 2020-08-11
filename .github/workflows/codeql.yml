@@ -28,11 +28,11 @@ jobs:
         with:
           languages: csharp
 
-      - name: Cache NuGet packages
-        uses: actions/cache@v2
-        with:
-          path: ~/.nuget/packages # Mac/Linux
-          key: ${{ hashFiles('*/packages.lock.json') }}
+      # - name: Cache NuGet packages
+      #   uses: actions/cache@v2
+      #   with:
+      #     path: ~/.nuget/packages # Mac/Linux
+      #     key: ${{ hashFiles('*/packages.lock.json') }}
 
       - name: Setup .NET Core SDK
         uses: actions/setup-dotnet@v1
@@ -40,7 +40,9 @@ jobs:
           dotnet-version: 2.2.x
 
       - name: Build solution
-        run: dotnet build
+        run: |
+          dotnet clean
+          dotnet build
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v1
