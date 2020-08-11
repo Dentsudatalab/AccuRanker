@@ -7,25 +7,13 @@ updates:
     labels:
       - "Type: Maintenance"
     commit-message:
-      prefix: "CI"
+      prefix: "ci"
       include: "scope"
     reviewers:
       - "kasperhesthaven"
 
   - package-ecosystem: "nuget"
-    directory: "/AccuRanker/"
-    schedule:
-      interval: "weekly"
-    labels:
-      - "Type: Maintenance"
-    commit-message:
-      prefix: "build"
-      include: "scope"
-    reviewers:
-      - "kasperhesthaven"
-
-  - package-ecosystem: "nuget"
-    directory: "/AccuRanker.Tests/"
+    directory: "/"
     schedule:
       interval: "weekly"
     labels:

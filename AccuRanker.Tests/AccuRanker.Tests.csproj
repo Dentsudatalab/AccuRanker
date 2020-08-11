@@ -19,4 +19,8 @@
   <ItemGroup>
     <ProjectReference Include="..\AccuRanker\AccuRanker.csproj" />
   </ItemGroup>
+  
+  <PropertyGroup>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+  </PropertyGroup>
 </Project>
