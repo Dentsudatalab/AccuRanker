@@ -4,8 +4,13 @@ on:
     branches:
       - master
 
+env:
+  DOTNET_CLI_TELEMETRY_OPTOUT: 1
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
+
 jobs:
   analyze:
+    name: CodeQL analysis
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
@@ -23,8 +28,19 @@ jobs:
         with:
           languages: csharp
 
-      - name: Autobuild
-        uses: github/codeql-action/autobuild@v1
+      - name: Cache NuGet packages
+        uses: actions/cache@v2
+        with:
+          path: ~/.nuget/packages # Mac/Linux
+          key: ${{ hashFiles('*/packages.lock.json') }}
+
+      - name: Setup .NET Core SDK
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 2.2.x
+
+      - name: Build solution
+        run: dotnet build
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v1
