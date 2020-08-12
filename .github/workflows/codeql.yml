@@ -28,19 +28,19 @@ jobs:
         with:
           languages: csharp
 
-      # - name: Cache NuGet packages
-      #   uses: actions/cache@v2
-      #   with:
-      #     path: ~/.nuget/packages # Mac/Linux
-      #     key: ${{ hashFiles('*/packages.lock.json') }}
+      - name: Cache NuGet packages
+        uses: actions/cache@v2
+        with:
+          path: ~/.nuget/packages # Mac/Linux
+          key: ${{ hashFiles('*/packages.lock.json') }}
 
-      # - name: Setup .NET Core SDK
-      #   uses: actions/setup-dotnet@v1
-      #   with:
-      #     dotnet-version: 2.2.x
+      - name: Setup .NET Core SDK
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 2.2.x
 
-      - name: Generate CodeQL database
-        run: codeql database create csharp-database --language=csharp --command='dotnet build /p:UseSharedCompilation=false /t:rebuild'
+      - name: Build solution
+        run: dotnet build /p:UseSharedCompilation=false
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v1
