@@ -29,7 +29,7 @@ jobs:
         if: ${{ github.event_name == 'pull_request' }}
 
       - name: Create temp folder # Resolves temporary issue in action
-        run: mkdir d:\a_msca\versions\temp
+        run: mkdir D:\a\_msca\versions\temp
 
         # Install dotnet, used by OSSAR
       - name: Install .NET
@@ -50,8 +50,6 @@ jobs:
       - name: Run OSSAR
         uses: github/ossar-action@v1
         id: ossar
-        with:
-          policy: d:\a\_actions\github\ossar-action\v1\policy\github.gdnpolicy
 
         # Upload results to the Security tab
       - name: Upload OSSAR results
