@@ -22,8 +22,9 @@ jobs:
         with:
           fetch-depth: 2
 
-      - name: Checkout PR head # instead of merge commit
+      - name: Checkout PR head # instead of merge commit if PR
         run: git checkout HEAD^2
+        if: ${{ github.event_name == 'pull_request' }}
 
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v1
@@ -44,5 +45,5 @@ jobs:
       - name: Build solution
         run: dotnet build /p:UseSharedCompilation=false
 
-      - name: Perform CodeQL Analysis
+      - name: Perform CodeQL analysis
         uses: github/codeql-action/analyze@v1
