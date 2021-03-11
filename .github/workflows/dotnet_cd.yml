@@ -1,4 +1,5 @@
 name: .NET 2.2 CD
+
 on:
   release:
     types:
@@ -22,7 +23,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Cache NuGet packages
-        uses: actions/cache@v2
+        uses: actions/cache@v2.1.4
         with:
           path: ~/.nuget/packages # Mac/Linux
           key: ${{ hashFiles('*/packages.lock.json') }}
@@ -49,7 +50,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Cache NuGet packages
-        uses: actions/cache@v2
+        uses: actions/cache@v2.1.4
         with:
           path: ~/.nuget/packages # Mac/Linux
           key: ${{ hashFiles('*/packages.lock.json') }}
@@ -59,10 +60,10 @@ jobs:
         with:
           dotnet-version: 2.2.x
 
-      - name: Get version number & set as env
+      - name: Get version number & set in env
         env:
           TAG_NAME: ${{ github.event.release.tag_name }}
-        run: echo ::set-env name=VERSION::$( echo "$TAG_NAME" | cut -c 2- )
+        run: echo "VERSION=$(echo "$TAG_NAME" | cut -c 2- )" >> $GITHUB_ENV
 
       - name: Pack project
         run: dotnet pack --configuration Release -p:PackageVersion=$VERSION

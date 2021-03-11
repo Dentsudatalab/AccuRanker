@@ -8,7 +8,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3DBC77D3-DA47-4437-B83C-67996D73363A}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
-		.gitlab-ci.yml = .gitlab-ci.yml
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccuRanker.Tests", "AccuRanker.Tests\AccuRanker.Tests.csproj", "{AE67C656-FF21-47E6-B3A0-A7606AB5C24A}"

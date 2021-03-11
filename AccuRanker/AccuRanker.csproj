@@ -1,17 +1,18 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <PackageId>DentsuDataLab.AccuRanker</PackageId>
     <Authors>Frederik Baun Hansen, Kasper Hesthaven</Authors>
-    <Product>Adobe Analytics API</Product>
+    <Company>Dentsu Danmark</Company>
     <Description>This package wraps the AccuRanker API making it easier to use.</Description>
-    <PackageProjectUrl>https://github.com/Dentsudatalab/AccuRanker</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/Dentsudatalab/AccuRanker</RepositoryUrl>
-    <PackageTags>accuranker dentsu</PackageTags>
+    <PackageId>DentsuDataLab.AccuRanker</PackageId>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-    <Company>Dentsu Data Lab</Company>
+    <PackageProjectUrl>https://github.com/Dentsudatalab/AccuRanker</PackageProjectUrl>
+    <PackageTags>accuranker dentsu</PackageTags>
+    <Product>AccuRanker API</Product>
+    <RepositoryUrl>https://github.com/Dentsudatalab/AccuRanker</RepositoryUrl>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
     <RootNamespace>DentsuDataLab.AccuRanker</RootNamespace>
+    <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,8 +20,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.9" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
@@ -30,8 +31,4 @@
       <PackagePath></PackagePath>
     </None>
   </ItemGroup>
-  
-  <PropertyGroup>
-    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
-  </PropertyGroup>
 </Project>
