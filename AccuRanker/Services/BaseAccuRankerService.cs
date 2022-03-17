@@ -40,10 +40,11 @@
 
         protected async Task AuthorizeClient(AuthValues authValues)
         {
+            
             var client = await AuthService.AuthorizeClient(authValues);
 
             HttpClient.DefaultRequestHeaders.Authorization =
-                new AuthenticationHeaderValue("Bearer", client.AccessToken);
+                new AuthenticationHeaderValue("Token", authValues.ClientSecret);
         }
 
         internal virtual async Task<IEnumerable<T>> GetAllPages<T>(AccuRankerQueryBuilder baseQuery, int pageSize = 500)

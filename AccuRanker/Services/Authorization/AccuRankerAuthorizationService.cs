@@ -51,8 +51,8 @@
         /// <param name="authValues">The values to use for authorization.</param>
         public virtual async Task<IdentityClient> AuthorizeClient(AuthValues authValues)
         {
-            // if (!IsClientLoggedIn(authValues.RefreshToken))
-            // {
+            if (!IsClientLoggedIn(authValues.RefreshToken))
+            {
                 var clientInfo = await GetClientInfo(authValues);
 
                 if (clientInfo.HasValue)
@@ -64,7 +64,7 @@
                         RefreshToken = clientInfo.Value.RefreshToken,
                         Scope = clientInfo.Value.Scope
                     };
-            // }
+            }
 
 
             return _clientStore.Client;
