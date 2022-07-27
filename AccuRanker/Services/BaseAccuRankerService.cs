@@ -6,7 +6,6 @@
     using System.Threading.Tasks;
 
     using Microsoft.Extensions.Logging;
-    using Microsoft.Extensions.Logging.Console;
 
     using Authorization;
 
@@ -34,7 +33,7 @@
         {
             HttpClient = httpClient;
             AuthService = authService;
-            ILoggerFactory loggerFactory = new LoggerFactory().AddConsole();
+            ILoggerFactory loggerFactory = new LoggerFactory();
             _logger = loggerFactory.CreateLogger<BaseAccuRankerService>();
         }
 
