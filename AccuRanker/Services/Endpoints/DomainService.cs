@@ -51,7 +51,6 @@
             var endpoint = new AccuRankerQueryBuilder($"domains/{id}/")
                 .WithFields(fields)
                 .Build();
-            Console.WriteLine("Logging of endpoint:" + endpoint);
 
             var domain = await HttpClient.GetApiResponse<Domain>(endpoint);
 
