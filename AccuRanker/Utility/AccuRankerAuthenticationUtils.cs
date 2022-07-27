@@ -59,7 +59,6 @@
                 {"refresh_token", authValues.RefreshToken},
                 {"grant_type", "refresh_token"}
             };
-            Console.WriteLine("Logging of getting accuranker access_token");
 
             var result = await client.PostFormResponse<IdentityClient>(AccuRankerCodeAuthBaseUrl, requestParams);
 

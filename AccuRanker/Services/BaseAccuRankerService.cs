@@ -4,8 +4,8 @@
     using System.Net.Http;
     using System.Net.Http.Headers;
     using System.Threading.Tasks;
-    using System;
-    
+    using Microsoft.Extensions.Logging;
+
     using Authorization;
 
     using Extensions;
@@ -24,10 +24,13 @@
 
         protected AuthValues AuthValues;
 
-        protected BaseAccuRankerService(HttpClient httpClient, AccuRankerAuthorizationService authService)
+        private readonly ILogger<BaseAccuRankerService> _logger;
+
+        protected BaseAccuRankerService(HttpClient httpClient, AccuRankerAuthorizationService authService, ILogger<BaseAccuRankerService> logger)
         {
             HttpClient = httpClient;
             AuthService = authService;
+            _logger = logger;
         }
 
         /// <summary>
@@ -42,7 +45,7 @@
         protected async Task AuthorizeClient(AuthValues authValues)
         {
             var client = await AuthService.AuthorizeClient(authValues);
-            Console.WriteLine("Logging of setting accuranker header access_token:" + client.AccessToken);
+            _logger.LogInformation($"Logging of setting accuranker header access_token:{client.AccessToken}");
             HttpClient.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue("Bearer", client.AccessToken);
         }

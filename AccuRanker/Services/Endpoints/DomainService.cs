@@ -3,8 +3,7 @@
     using System.Collections.Generic;
     using System.Net.Http;
     using System.Threading.Tasks;
-    using System;
-    
+
     using Authorization;
 
     using Extensions;
@@ -52,7 +51,6 @@
             var endpoint = new AccuRankerQueryBuilder($"domains/{id}/")
                 .WithFields(fields)
                 .Build();
-            Console.WriteLine("Logging of endpoint:" + endpoint);
 
             var domain = await HttpClient.GetApiResponse<Domain>(endpoint);
 
