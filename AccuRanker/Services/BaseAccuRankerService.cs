@@ -43,7 +43,7 @@
             var client = await AuthService.AuthorizeClient(authValues);
 
             HttpClient.DefaultRequestHeaders.Authorization =
-                new AuthenticationHeaderValue("Token", authValues.ClientSecret);
+                new AuthenticationHeaderValue("Bearer", client.AccessToken);
         }
 
         internal virtual async Task<IEnumerable<T>> GetAllPages<T>(AccuRankerQueryBuilder baseQuery, int pageSize = 500)
