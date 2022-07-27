@@ -29,12 +29,12 @@
 
         protected BaseAccuRankerService(
             HttpClient httpClient,
-            AccuRankerAuthorizationService authService,
-            ILogger<BaseAccuRankerService> logger)
+            AccuRankerAuthorizationService authService)
         {
             HttpClient = httpClient;
             AuthService = authService;
-            _logger = logger;
+            ILoggerFactory loggerFactory = new LoggerFactory().AddConsole();
+            _logger = loggerFactory.CreateLogger<BaseAccuRankerService>();
         }
 
         /// <summary>
