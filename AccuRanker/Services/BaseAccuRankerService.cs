@@ -5,7 +5,7 @@
     using System.Net.Http.Headers;
     using System.Threading.Tasks;
     using System;
-    
+
     using Authorization;
 
     using Extensions;

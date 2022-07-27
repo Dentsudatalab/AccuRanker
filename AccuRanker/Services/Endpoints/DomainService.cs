@@ -4,7 +4,7 @@
     using System.Net.Http;
     using System.Threading.Tasks;
     using System;
-    
+
     using Authorization;
 
     using Extensions;
