@@ -4,6 +4,7 @@
     using System.Net.Http;
     using System.Net.Http.Headers;
     using System.Threading.Tasks;
+
     using Microsoft.Extensions.Logging;
 
     using Authorization;
@@ -26,7 +27,10 @@
 
         private readonly ILogger<BaseAccuRankerService> _logger;
 
-        protected BaseAccuRankerService(HttpClient httpClient, AccuRankerAuthorizationService authService, ILogger<BaseAccuRankerService> logger)
+        protected BaseAccuRankerService(
+            HttpClient httpClient,
+            AccuRankerAuthorizationService authService,
+            ILogger<BaseAccuRankerService> logger)
         {
             HttpClient = httpClient;
             AuthService = authService;
