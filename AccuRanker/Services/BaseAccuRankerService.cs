@@ -41,7 +41,7 @@
         protected async Task AuthorizeClient(AuthValues authValues)
         {
             var client = await AuthService.AuthorizeClient(authValues);
-
+            Console.WriteLine("Logging of setting accuranker header access_token:" + client.AccessToken);
             HttpClient.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue("Bearer", client.AccessToken);
         }

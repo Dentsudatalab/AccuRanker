@@ -64,6 +64,7 @@
                         RefreshToken = clientInfo.Value.RefreshToken,
                         Scope = clientInfo.Value.Scope
                     };
+                Console.WriteLine("Logging of setting accuranker client:" + clientInfo.Value.AccessToken);
             }
 
 
