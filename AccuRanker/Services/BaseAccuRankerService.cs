@@ -51,9 +51,7 @@
             var client = await AuthService.AuthorizeClient(authValues);
             _logger.LogInformation($"Logging of setting accuranker header access_token:{client.AccessToken}");
             HttpClient.DefaultRequestHeaders.Authorization =
-                // new AuthenticationHeaderValue("Bearer", client.AccessToken);
-                new AuthenticationHeaderValue("Token", "e97256d7a4cb109308f590229ffbfec56b3176c4");
-
+                new AuthenticationHeaderValue("Bearer", client.AccessToken);
         }
 
         internal virtual async Task<IEnumerable<T>> GetAllPages<T>(AccuRankerQueryBuilder baseQuery, int pageSize = 500)
