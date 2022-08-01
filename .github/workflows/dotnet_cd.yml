@@ -27,10 +27,13 @@ jobs:
           path: ~/.nuget/packages # Mac/Linux
           key: ${{ hashFiles('*/packages.lock.json') }}
 
-      - name: Setup .NET Core SDK
-        uses: actions/setup-dotnet@v2
+      - name: Setup .NET Core SDK & nuget.config
+        uses: actions/setup-dotnet@v1
+        env:
+          NUGET_AUTH_TOKEN: ${{ secrets.REGISTRY_AUTH_WRITE_TOKEN }}
         with:
-          dotnet-version: 2.2.x
+          dotnet-version: 3.1.x
+          source-url: https://nuget.pkg.github.com/dentsudatalab/index.json
 
       - name: Get version number & set in env
         env:
@@ -41,4 +44,4 @@ jobs:
         run: dotnet pack --configuration Release -p:PackageVersion=$VERSION
 
       - name: Push NuGet package
-        run: dotnet nuget push bin/Release/DentsuDataLab.AccuRanker.$VERSION.nupkg -s "nuget.org" -k ${{ secrets.NUGET_AUTH_TOKEN }}
+        run: curl -vX PUT -u "$GITHUB_ACTOR:${{ secrets.REGISTRY_AUTH_WRITE_TOKEN }}" -F package=@bin/Release/DentsuDataLab.AccuRanker.$VERSION.nupkg https://nuget.pkg.github.com/dentsudatalab/
