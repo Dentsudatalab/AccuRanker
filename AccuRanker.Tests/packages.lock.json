@@ -36,9 +36,9 @@
       },
       "NUnit": {
         "type": "Direct",
-        "requested": "[3.13.2, )",
-        "resolved": "3.13.2",
-        "contentHash": "u+fz/lXyR4vlamySNAEMrXvh+GhAQiB6/aVZtU5WjivR5zF26Ui0tfteDtWqT90k9D8y6g8rFKYQC97Z7d195w==",
+        "requested": "[3.14.0, )",
+        "resolved": "3.14.0",
+        "contentHash": "R7iPwD7kbOaP3o2zldWJbWeMQAvDKD0uld27QvA3PAALl1unl7x0v2J7eGiJOYjimV/BuGT4VJmr45RjS7z4LA==",
         "dependencies": {
           "NETStandard.Library": "2.0.0"
         }
@@ -689,9 +689,9 @@
       "DentsuDataLab.AccuRanker": {
         "type": "Project",
         "dependencies": {
-          "Microsoft.Extensions.DependencyInjection": "5.0.1",
-          "Microsoft.Extensions.Http": "5.0.0",
-          "Newtonsoft.Json": "13.0.1"
+          "Microsoft.Extensions.DependencyInjection": "[5.0.1, )",
+          "Microsoft.Extensions.Http": "[5.0.0, )",
+          "Newtonsoft.Json": "[13.0.1, )"
         }
       }
     }
