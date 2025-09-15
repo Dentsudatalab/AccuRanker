@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.NETCore.App" Version="2.2.8" />
     <ProjectReference Include="..\AccuRanker\AccuRanker.csproj" />
   </ItemGroup>
 </Project>
